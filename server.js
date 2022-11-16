@@ -16,15 +16,12 @@ mongoose
   .then(() => console.log("connected to mongodb"))
   .catch((err) => console.log(err));
 
-const Books = require("./Models/BooksModel");
 // books.map((row) => {
 //     var book = new Books(row);
 //     book.save()
 //         .then((result) => console.log(`book ${row.title} uploaded to mongodb`))
 //         .catch((err) => console.log(err))
 // });
-
-// ANCHOR Search Latest Books
 
 app.use("/", BooksRoutes);
 app.use("/api/users", UserRoutes);
