@@ -7,18 +7,16 @@ app.use(cors());
 app.use(bodyParser.json({ limit: "20mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
 require("dotenv").config();
-const BooksRoutes = require('./Routes/BookRoutes')
-
+const BooksRoutes = require("./Routes/BookRoutes");
+const UserRoutes = require("./Routes/userRoutes");
 var mongoose = require("mongoose");
 
 mongoose
-  .connect(
-    process.env.DATABASE_URL
-  )
+  .connect(process.env.DATABASE_URL)
   .then(() => console.log("connected to mongodb"))
   .catch((err) => console.log(err));
 
-const Books = require('./Models/BooksModel')
+const Books = require("./Models/BooksModel");
 // books.map((row) => {
 //     var book = new Books(row);
 //     book.save()
@@ -28,8 +26,9 @@ const Books = require('./Models/BooksModel')
 
 // ANCHOR Search Latest Books
 
-app.use('/', BooksRoutes)
-const PORT = 8000;
-app.listen(PORT, () => {
-  console.log(`your application is listen on port: ${PORT}`);
+app.use("/", BooksRoutes);
+app.use("/api/users", UserRoutes);
+
+app.listen(process.env.PORT, () => {
+  console.log(`your application is listen on port: ${process.env.PORT}`);
 });
