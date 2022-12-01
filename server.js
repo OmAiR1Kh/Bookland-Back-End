@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const books = require("./datanew.js");
+
 var cors = require("cors");
 app.use(cors());
 app.use(bodyParser.json({ limit: "20mb", extended: true }));
@@ -16,6 +16,7 @@ mongoose
   .then(() => console.log("connected to mongodb"))
   .catch((err) => console.log(err));
 
+// const books = require("./datanew.js");
 // books.map((row) => {
 //     var book = new Books(row);
 //     book.save()
